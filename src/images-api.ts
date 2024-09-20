@@ -21,3 +21,4 @@ export const getPhotos = async (
   console.log(data);
   return data;
 };
+

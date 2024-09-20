@@ -8,11 +8,11 @@ import './App.css';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../components/ImageModal/ImageModal';
-
+import { Modal, Image, Response} from '../types';
 function App() {
   const [images, setImages] = useState<Image[]>([])
   const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<string>(null)
+  const [error, setError] = useState<string|null>(null)
   const [page, setPage] = useState<number>(1)
   const [query, setQuery] = useState<string>('')
   const [isEmpty, setIsEmpty] = useState<boolean>(false)
@@ -35,7 +35,7 @@ function App() {
       setLoading(true);
       setError(null);
       try {
-        const { results, total, total_pages } = await getPhotos(query, page);
+        const { results, total, total_pages }: Response = await getPhotos(query, page);
         
         if (!total) {
           setIsEmpty(true);
@@ -80,7 +80,7 @@ function App() {
             
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
-      {modal && <ImageModal image={modal} onClose={closeModal} />}
+      {/* {modal && <ImageModal image={modal} onClose={closeModal} />} */}
       {nextPage && <LoadMoreBtn handleLoadMoreClick={handleLoadMoreClick} />}
       {isEmpty && <Toaster />}
       <ImageModal
