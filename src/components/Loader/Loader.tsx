@@ -1,4 +1,5 @@
 import { Audio } from 'react-loader-spinner';
+import { string } from 'yup';
 const Loader = () => {
 
     return (
@@ -9,8 +10,8 @@ const Loader = () => {
                 radius="9"
                 color="green"
                 ariaLabel="loading"
-                wrapperStyle
-                wrapperClass
+                wrapperStyle = {{}}
+                wrapperClass = ""
             />
         </>
     )

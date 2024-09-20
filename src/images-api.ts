@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Response} from "./types";
 
 const API_KEY =
   "YFz5kTWwkf2PDqA34YI89-dAWpCDJlE3WNOh_4qhBOo";
@@ -11,10 +12,10 @@ axios.defaults.params = {
 };
 
 export const getPhotos = async (
-  query,
-  page,
-) => {
-  const { data } = await axios.get(
+  query: string,
+  page: number,
+): Promise<Response> => {
+  const { data } = await axios.get<Response> (
     `/search/photos?client_id=${API_KEY}&query=${query}&page=${page}`,
   );
   console.log(data);

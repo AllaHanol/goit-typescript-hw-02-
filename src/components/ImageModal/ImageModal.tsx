@@ -3,7 +3,14 @@ import css from "./ImageModal.module.css";
 
 Modal.setAppElement("#root");
 
-const ImageModal = ({ isOpen, closeModal, imgUrl, imgAlt }) => {
+interface ImageModalProps {
+  isOpen: boolean;
+  closeModal: () => void;
+  imgUrl: string;
+  imgAlt: string;
+}
+
+const ImageModal : React.FC<ImageModalProps> = ({ isOpen, closeModal, imgUrl, imgAlt }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -25,37 +32,5 @@ const ImageModal = ({ isOpen, closeModal, imgUrl, imgAlt }) => {
 };
 
 export default ImageModal;
-
-
-
-// import { Modal } from 'modal';
-// import css from './ImageModal.module.css';
-
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//     maxWidth: '90%',
-//     maxHeight: '90%',
-//   },
-//   overlay: {
-//     backgroundColor: 'rgba(0, 0, 0, 0.75)',
-//   },
-// };
-
-// const ImageModal = ({ largeImageURL, onClose }) => {
-//   return (
-//     <Modal isOpen={true} onRequestClose={onClose} style={customStyles}>
-//           <button className={css.closeButton} onClick={onClose}>X</button>
-//           <img src={largeImageURL} alt="" className={css.modalImage} />
-//     </Modal>
-//   );
-// };
-
-// export default ImageModal;
 
 
