@@ -69,7 +69,7 @@ function App() {
     setModal({ ...modal, isOpen: true, imgUrl: url, imgAlt: alt });
   };
   const closeModal = (): void => {
-    setModal({ ...modal, isOpen: false, imgUrl: "", imgAlt: "" && "noAlt" });
+    setModal({ ...modal, isOpen: false, imgUrl: "", imgAlt: modal.imgAlt?? "noAlt" });
   };
     
   return (
